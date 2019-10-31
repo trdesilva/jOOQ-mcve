@@ -75,7 +75,7 @@ public class MCVETest {
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte)(i - Byte.MAX_VALUE);
         }
-        // this throws with the following:
+        // this throws with the following on MySQL 5.6.43, but not 5.6.39:
         // org.jooq.exception.DataAccessException: SQL [insert into `TestTable` (`Foo`, `Bar`) values (?, ?)]; Incorrect string value: '\x81\x82\x83\x84\x85\x86...' for column 'Foo' at row 1
         ctx.insertInto(Testtable.TESTTABLE).values(bytes, bytes).execute();
     }
