@@ -71,7 +71,7 @@ public class MCVETest {
     @Test
     public void mcveTest() {
         ctx.ddl(Testtable.TESTTABLE, new DDLExportConfiguration().createTableIfNotExists(true)).executeBatch();
-        byte[] bytes = new byte[128];
+        byte[] bytes = new byte[256];
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte)(i - Byte.MAX_VALUE);
         }
